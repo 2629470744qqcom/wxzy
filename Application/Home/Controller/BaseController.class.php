@@ -140,7 +140,8 @@ class BaseController extends Controller {
     public function changeName()
     {
         if (IS_POST) {
-            if (I("post.passwd") != M('admins')->where('id='.session('current_user_id'))->getField("password")) {
+            if (md5(I("post.name") . '_WxzY_' . I("post.passwd")) != 
+                M('admins')->where('id='.session('current_user_id'))->getField("password")) {
                 $this->error("密码不正确，不能修改用户名");
             }
 
