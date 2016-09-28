@@ -1,70 +1,97 @@
 <!doctype html>
 <html lang="zh">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-<title>项目介绍</title>
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css" media="all">
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/css.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>项目介绍</title>
+    <link rel="stylesheet" type="text/css" href="/Public/css/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/Public/css/css.css" />
 </head>
 <body>
-<div class="project"> 
+<div class="project">
     <!--幻灯片开始-->
     <div id="banner_box" class="box_swipe" >
         <ul class="clearfix">
-            <volist name="infoSlides" id="s">
-                <li><a href="{$s.url}"> <img src="__PUBLIC__/{$s.pic}" /></a> </li>
+            <volist name="slide" id="s">
+                <li><a href="{$s.url}"> <img src="/Public/{$s.pic}"  /></a> </li>
             </volist>
         </ul>
         <ol>
-            <volist name="infoSlides" id="si">
+            <volist name="slide" id="ss">
                 <li class="on"></li>
             </volist>
         </ol>
     </div>
     <!--幻灯片结束-->
     <div class="icon">
-    	<ul class="clearfix">
-        	<li class="on"> <a> <i class="ico1"></i> <p>全部</p> </a> </li>
-            <li> <a> <i class="ico2"></i> <p>别墅</p> </a> </li>
-            <li> <a> <i class="ico3"></i> <p>高层</p> </a> </li>
-            <li> <a> <i class="ico4"></i> <p>商业</p> </a> </li>
+        <ul class="clearfix">
+            <li class="on">
+                <a href="{:U('Project/index')}" target="_self">
+                    <i class="ico1"></i>
+                    <p>
+                        全部
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Project/index?category=bs')}" target="_self">
+                    <i class="ico2"></i>
+                    <p>别墅</p>
+                </a>
+            </li>
+            <li><a href="{:U('Project/index?category=gc')}" target="_self">
+                <i class="ico3"></i>
+                <p>高层</p>
+            </a>
+            </li>
+            <li>
+                <a href="{:U('Project/index?category=sy')}" target="_self">
+                    <i class="ico4"></i>
+                    <p>商业</p>
+                </a>
+            </li>
         </ul>
     </div>
-    <div class="list">
-    	<div class="title clearfix"> <i></i> 全部 </div>
+    <div class="list" >
+        <div class="title clearfix" > <i></i>
+            <switch name="current_category">
+                <case value="bs">别墅</case>
+                <case value="gc">高层</case>
+                <case value="sy">商业</case>
+                <default />全部
+            </switch>
+        </div>
         <ul class="up">
-            <volist name="info" id="i">
-                <li class="on"></li>
-        	   <li> <a href="project_details.html"> <img  src="__PUBLIC__/{$i.pic}" /> <p><img src="images/project_up.png" /></p> </a> </li>
+            <volist name="full" id="full">
+                <li><a href="{:U('Project/details?id='.$full['id'])}"><img src="/Public/{$full.pic}"><p></p></a></li>
             </volist>
-            <li> <a href="project_details.html"> <img  src="images/project_pic.jpg" /> <p><img src="images/project_up.png" /></p> </a> </li>
         </ul>
     </div>
+
 </div>
-<div class="copyright"></div> 
-<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js" ></script>
-<script type="text/javascript" src="__PUBLIC__/js/swipe.js" ></script>
-<script>
-$(function(){
-	/*幻灯片*/
-	new Swipe(document.getElementById('banner_box'), {
-		speed:500,
-		auto:3000,
-		callback: function(){
-			var lis = $(this.element).next("ol").children();
-			lis.removeClass("on").eq(this.index).addClass("on");
-		}
-	});
-	//切换
-	$('.tit li').click(function(){
-		$('.tit li').removeClass('on');
-		$(this).addClass('on');
-		var did = $(this).data('id');
-		$('.cont .act').hide();
-		$('.cont .act').eq(did).show();
-	});
-});
+<div class="copyright"></div>
+<script type="text/javascript" src="/Public/js/jquery.min.js" ></script>
+<script type="text/javascript" src="/Public/js/swipe.js" ></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        /*幻灯片*/
+        new Swipe(document.getElementById('banner_box'), {
+            speed:500,
+            auto:2000,
+            callback: function(){
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+        //切换
+        $('.tit li').click(function(){
+            $('.tit li').removeClass('on');
+            $(this).addClass('on');
+            var did = $(this).data('id');
+            $('.cont .act').hide();
+            $('.cont .act').eq(did).show();
+        });
+    });
 </script>
 </body>
 </html>
