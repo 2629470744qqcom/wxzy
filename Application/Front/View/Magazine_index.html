@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>杂志</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__css/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__css/css.css" />
+</head>
+<body>
+<div class="magazine"> 
+    <div class="name"> <img src="__PUBLIC__images/name.jpg" /> </div>
+    <div class="change">
+    	<ul class="clearfix tit">
+        	<li data-id="0"> <p> <img src="__PUBLIC__images/tit1.png" /> </p> <p>随手拍</p> </li>
+        	<li data-id="1"> <p> <img src="__PUBLIC__images/tit2.png" /> </p> <p>会惠生活</p> </li>
+        </ul>
+        <ul class="pic">
+        	<li> <img src="__PUBLIC__images/magazine_ad.jpg" /> </li>
+            <li class="hide"> <img src="__PUBLIC__images/course.jpg" /> </li>
+        </ul>
+    </div>
+    <!-- 精选期刊-->
+    <div class="choice_tit"> 精选期刊 </div>
+    <div id="banner_box" class="box_swipe" >
+        <ul>
+            <volist name="info" id="i">
+                <li><a href="javascript:void(0);"> <img src="__PUBLIC__{$i.pic}" /></a> </li>
+            </volist>
+        </ul>
+        <ol>
+            <volist name="info" id="is">
+                <li class="on"></li>
+            </volist>
+        </ol>
+        <p class="name"><a href="details.html">{$infoEssence.title}</a></p>
+        <p class="choice_right"></p>
+    </div>
+    <div class="scenery">
+    	<ul>
+            <volist name="info" id="s">
+        	   <li><img src="__PUBLIC__{$s.pic}" /> <p class="tit">{$s.title}</p> </li>
+            </volist>
+        </ul>
+    </div>
+</div>
+<div class="copyright"></div> 
+<script type="text/javascript" src="__PUBLIC__js/jquery.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__js/swipe.js" ></script>
+<script>
+$(function(){
+	/*幻灯片*/
+	new Swipe(document.getElementById('banner_box'), {
+		speed:500,
+		auto:3000,
+		callback: function(){
+			var lis = $(this.element).next("ol").children();
+			lis.removeClass("on").eq(this.index).addClass("on");
+		}
+	});
+	//切换
+	$('.change .tit li').click(function(){
+		var did = $(this).data('id');
+		$('.change .pic li').hide();
+		$('.change .pic li').eq(did).show();
+	});
+});
+</script>
+</body>
+</html>

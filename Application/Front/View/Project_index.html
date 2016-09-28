@@ -3,15 +3,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-<title>伟星历程</title>
+<title>项目介绍</title>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__css/common.css" media="all">
 <link rel="stylesheet" type="text/css" href="__PUBLIC__css/css.css" />
 </head>
 <body>
-<div class="course"> 
+<div class="project"> 
     <!--幻灯片开始-->
     <div id="banner_box" class="box_swipe" >
-        <ul>
+        <ul class="clearfix">
             <volist name="infoSlides" id="s">
                 <li><a href="{$s.url}"> <img src="__PUBLIC__{$s.pic}" /></a> </li>
             </volist>
@@ -23,15 +23,22 @@
         </ol>
     </div>
     <!--幻灯片结束-->
-
-
-    <div class="content">
-    	<ul>
-        	<li class="title">{$info.title}</li>
-            <li class="text">
-            	<p>&nbsp;&nbsp;&nbsp;&nbsp;{$info.desc}</p>
-                <p><img src="__PUBLIC__{$info.pic}" /></p>
-            </li>
+    <div class="icon">
+    	<ul class="clearfix">
+        	<li class="on"> <a> <i class="ico1"></i> <p>全部</p> </a> </li>
+            <li> <a> <i class="ico2"></i> <p>别墅</p> </a> </li>
+            <li> <a> <i class="ico3"></i> <p>高层</p> </a> </li>
+            <li> <a> <i class="ico4"></i> <p>商业</p> </a> </li>
+        </ul>
+    </div>
+    <div class="list">
+    	<div class="title clearfix"> <i></i> 全部 </div>
+        <ul class="up">
+            <volist name="info" id="i">
+                <li class="on"></li>
+        	   <li> <a href="project_details.html"> <img  src="__PUBLIC__{$i.pic}" /> <p><img src="images/project_up.png" /></p> </a> </li>
+            </volist>
+            <li> <a href="project_details.html"> <img  src="images/project_pic.jpg" /> <p><img src="images/project_up.png" /></p> </a> </li>
         </ul>
     </div>
 </div>
@@ -48,6 +55,14 @@ $(function(){
 			var lis = $(this.element).next("ol").children();
 			lis.removeClass("on").eq(this.index).addClass("on");
 		}
+	});
+	//切换
+	$('.tit li').click(function(){
+		$('.tit li').removeClass('on');
+		$(this).addClass('on');
+		var did = $(this).data('id');
+		$('.cont .act').hide();
+		$('.cont .act').eq(did).show();
 	});
 });
 </script>

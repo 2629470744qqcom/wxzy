@@ -3,36 +3,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-<title>伟星历程</title>
+<title>项目介绍详情</title>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__css/common.css" media="all">
 <link rel="stylesheet" type="text/css" href="__PUBLIC__css/css.css" />
 </head>
 <body>
-<div class="course"> 
+<div class="project">
+	<div class="name"> <a> <img src="images/title.jpg" /> </a> </div>
     <!--幻灯片开始-->
     <div id="banner_box" class="box_swipe" >
-        <ul>
-            <volist name="infoSlides" id="s">
-                <li><a href="{$s.url}"> <img src="__PUBLIC__{$s.pic}" /></a> </li>
-            </volist>
+        <ul class="clearfix">
+            <li><a href="javascript:void(0);"> <img src="__PUBLIC__{$info.pic}" /></a> </li>
         </ul>
         <ol>
-            <volist name="infoSlides" id="si">
-                <li class="on"></li>
-            </volist>
+            <li class="on"></li>
         </ol>
     </div>
     <!--幻灯片结束-->
-
-
-    <div class="content">
-    	<ul>
-        	<li class="title">{$info.title}</li>
-            <li class="text">
-            	<p>&nbsp;&nbsp;&nbsp;&nbsp;{$info.desc}</p>
-                <p><img src="__PUBLIC__{$info.pic}" /></p>
-            </li>
-        </ul>
+    <div class="tel">联系电话：<a href="3120688">{$info.tel}</a></div>
+    <div class="cont">
+        {$info.desc}
+    	<!-- <p> &nbsp;&nbsp;&nbsp;&nbsp;项目地址：项目地址项目地址项目地址项目地址项目地址项目地址项目地址项目地址</p>
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;动态：动态动态动态动态动态动态动态动态动态 </p>
+        <p> <img src="images/activity.jpg" /> </p> -->
     </div>
 </div>
 <div class="copyright"></div> 
@@ -48,6 +41,14 @@ $(function(){
 			var lis = $(this.element).next("ol").children();
 			lis.removeClass("on").eq(this.index).addClass("on");
 		}
+	});
+	//切换
+	$('.tit li').click(function(){
+		$('.tit li').removeClass('on');
+		$(this).addClass('on');
+		var did = $(this).data('id');
+		$('.cont .act').hide();
+		$('.cont .act').eq(did).show();
 	});
 });
 </script>

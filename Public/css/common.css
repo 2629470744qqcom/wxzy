@@ -1,0 +1,49 @@
+﻿/*************************************************************/
+*{padding:0; margin:0;}
+*, ::before, ::after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+html, body{height:100%;min-height: 100%;margin: 0;padding: 0;}
+html{font-size: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;}
+body {width: 100%;font-family: Helvetica, Arial, sans-serif;font-size: 16px;color:#000;-webkit-text-size-adjust: none;}
+header, footer, article, section, nav, menu, hgroup {display: block;clear: all;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%}
+img{width:100%;-ms-interpolation-mode: bicubic/*IE7下解图片缩放失真*/;vertical-align: middle;border: 0;}
+a {text-decoration: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0.35)/*IOS点击出现半透明背景*/; color:#000;}
+
+hr{ height:1px; color:#CCCCCC;}
+
+ul, ol {list-style: none}
+form {display: inline}
+textarea {resize: none/*防止多文行本框缩放*/;padding: 8px 0;border-radius: 0;}
+input, button, select, select[multiple]/*select多选属性*/,  textarea {outline: none/*隐藏轮廓样式*/;-webkit-appearance: none/*标签转换*/;border-radius: 0;border: 0;font-family: inherit;font-size: inherit;vertical-align: middle;background-image: none;}
+input[type="checkbox"], input[type="radio"] {opacity: 0;cursor: pointer;}
+button, input[type="button"], input[type="reset"], input[type="submit"] {cursor: pointer;-webkit-appearance: button;-moz-appearance: button}
+input:focus:-moz-placeholder, input:focus::-webkit-input-placeholder {color:transparent}
+button::-moz-focus-inner, input::-moz-focus-inner {padding:0;border:0}
+
+/***幻灯片 开始***/
+.box_swipe{overflow:hidden;position:relative;}
+.box_swipe ul{-webkit-padding-start: 0px;}
+.box_swipe ul li{list-style:none;}
+.box_swipe ul a{color:inherit;text-decoration:none;}
+.box_swipe ul li img{ display:block; width:100%;}
+.box_swipe>ol{margin:0px;padding:0px;height:25px;position:absolute;z-index:10;bottom:10px;width:100%;text-align:center;padding-right:15px;box-sizing:border-box;}
+.box_swipe>ol>li{display:inline-block;margin:3px;width:10px;height:10px;margin-top:8px;background-color:#ffffff;-moz-border-radius: 10px;-webkit-border-radius: 10px;}
+.box_swipe>ol>li.on{background-color:#09cdf7;}
+/*幻灯片结束*/
+
+/*通用*/
+.box-sizing{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+.fl {float: left;}
+.fr {float: right;}
+.clearfix:after{display:block;content:"";clear:both;}
+.alignLt {text-align: left;}
+.alignRt {text-align: right;}
+.alignCt {text-align: center;}
+.hidden,.hide{display: none;}
+.show{display: block;}
+.bold {font-weight: bold;}
+.bolder {font-weight: bolder;}
+.nowrap{white-space: nowrap/*强制换行*/;overflow: hidden;text-overflow: ellipsis/*加省略号*/;}
+.ellipsis {white-space: nowrap;text-overflow: ellipsis;overflow: hidden}
+.break {word-break: break-all;word-wrap: break-word}
+.red{ color:#d7000f;}
