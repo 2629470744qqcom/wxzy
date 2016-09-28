@@ -1,15 +1,15 @@
 <ul class="sui-breadcrumb">
   <li><a href="{:U('Index/index')}">首页</a></li>
-  <li><a href="{:U('About/index')}">伟星历程</a></li>
-  <li class="active">伟星历程轮播图档案页</li>
+  <li><a href="{:U('About/index')}">活动</a></li>
+  <li class="active">活动档案页</li>
 </ul>
 
 
 <form class="sui-form form-horizontal sui-validate" action="{$action_url}" method="post" enctype="multipart/form-data">
   <div class="control-group">
-    <label class="control-label">链接：</label>
+    <label class="control-label">标题：</label>
     <div class="controls">
-      <input class="input-xxlarge" name="url" type='text' value="{$info.url}" />
+      <input class="input-xxlarge" name="title" type='text' data-rules="required|minlength=2" value="{$info.title}" />
     </div>
   </div>
   <div class="control-group">
@@ -19,19 +19,42 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label">图片：</label>
+    <label class="control-label">封面图片：</label>
     <div class="controls">
-    	<if condition="$info and $info.pic"><img src="__PUBLIC__/{$info.pic}" alt="" style="max-width:200px; height:auto;"><br/><br></if>
+      <if condition="$info and $info.pic"><img src="__PUBLIC__/{$info.pic}" alt="" style="max-width:200px; height:auto;"><br/><br></if>
       <input type="file" name="pic" class="input-xlarge">
     </div>
   </div>
-	<input type="hidden" name="id" value="{$info.id}">
+  <div class="control-group">
+    <label class="control-label">内容：</label>
+    <div class="controls">
+      <textarea id="editor_id" name="desc" style="width:700px;height:300px;">{$info.desc}</textarea>
+    </div>
+  </div>
+  <input type="hidden" name="id" value="{$info.id}">
   <br><br>
   <div class="control-group">
-  	<label class="control-label"></label>
+    <label class="control-label"></label>
     <div class="controls">
       <button class="sui-btn btn-primary btn-xlarge" type="submit">保存</button>
-      <a href="{:U('About/slides')}"><button class="sui-btn btn-primary btn-xlarge" type="button">取消</button></a>
+      <a href="{:U('Activity/index')}"><button class="sui-btn btn-primary btn-xlarge" type="button">取消</button></a>
     </div>
   </div>
 </form> 
+
+
+
+<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/lang/zh-CN.js"></script>
+<script>
+    KindEditor.ready(function(K) {
+      window.editor = K.create('#editor_id');
+    });
+
+    var options = {
+      cssPath : '/css/index.css',
+      filterMode : true
+    };
+
+    var editor = K.create('textarea[name="desc"]', options);
+</script>

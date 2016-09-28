@@ -29,10 +29,10 @@
 	      <td><img src="__PUBLIC__/{$v.pic}" alt="" style="max-width:100px;height:auto;"></td>
 	      <td>{$v.create_time|date="Y-m-d H:i:s",###}</td>
 	      <td>
-	      	<a href="{:U('Magazine/edit?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info" data-id="{$i}">编辑</a>
+	      	<a href="{:U('Activity/edit?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info" data-id="{$i}">编辑</a>
 	      </td>
 	      <td>
-      		<a href="{:U('Magazine/del?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info btn_del" data-id="{$i}">删除</a>
+      		<a href="{:U('Activity/del?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info btn_del" data-id="{$i}">删除</a>
 	      </td>
 	    </tr>  		
   	</volist>
