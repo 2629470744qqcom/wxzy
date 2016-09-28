@@ -12,7 +12,7 @@ return array(
     'DB_PORT'   => '3306',
     'DB_NAME'   => 'db_wxzy',
     'DB_USER'   => 'root',
-    'DB_PWD'    => 'admin',
+    'DB_PWD'    => '',
     'DB_PREFIX' => 'wxzy_',
 
 

@@ -24,8 +24,8 @@
     <div class="choice_tit"> 精选期刊 </div>
     <div id="banner_box" class="box_swipe" >
         <ul>
-            <volist name="info" id="i">
-                <li><a href="javascript:void(0);"> <img src="__PUBLIC__/{$i.pic}" /></a> </li>
+            <volist name="infos" id="i">
+                <li><a href="{:U('Magazine/profile?id='.$i['id'])}" target="_blank"> <img src="__PUBLIC__/{$i.pic}" /></a> </li>
             </volist>
         </ul>
         <ol>
@@ -33,18 +33,18 @@
                 <li class="on"></li>
             </volist>
         </ol>
-        <p class="name"><a href="details.html">{$infoEssence.title}</a></p>
+        <p class="name"><a href="{:U('Magazine/profile?id='.$info['id'])}">第【{$infos.id}】期{$infos.title}</a></p>
         <p class="choice_right"></p>
     </div>
     <div class="scenery">
     	<ul>
             <volist name="info" id="s">
-        	   <li><img src="__PUBLIC__/{$s.pic}" /> <p class="tit">{$s.title}</p> </li>
+        	   <li><a href="{:U('Magazine/profile?id='.$s['id'])}" target="_blank"><img src="__PUBLIC__/{$s.pic}" /> <p class="tit">[{$s.title}]</p></a></li>
             </volist>
         </ul>
     </div>
 </div>
-<div class="copyright"></div> 
+<div class="copyright"></div>
 <script type="text/javascript" src="__PUBLIC__/js/jquery.min.js" ></script>
 <script type="text/javascript" src="__PUBLIC__/js/swipe.js" ></script>
 <script>

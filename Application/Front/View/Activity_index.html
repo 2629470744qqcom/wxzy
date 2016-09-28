@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <title>活动</title>
-<link rel="stylesheet" type="text/css" href="__PUBLIC__//css/common.css" media="all">
-<link rel="stylesheet" type="text/css" href="__PUBLIC__//css/css.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/css.css" />
 </head>
 <body>
 <div class="activity"> 
@@ -13,7 +13,7 @@
     <div id="banner_box" class="box_swipe" >
         <ul class="clearfix">
             <volist name="infoSlides" id="s">
-                <li><a href="{$s.url}"> <img src="__PUBLIC__//{$s.pic}" /></a></li>
+                <li><a href="{$s.url}"> <img src="__PUBLIC__/{$s.pic}" /></a></li>
             </volist>
         </ul>
         <ol>
@@ -24,8 +24,6 @@
     </div>
     <!--幻灯片结束-->
 
-
-
     <div class="tit">
     	<ul>
         	<li class="on" data-id="0"> <a href="javascript:void(0);"> 全部活动 </a> </li>
@@ -34,32 +32,36 @@
         </ul>
     </div>
     <div class="cont">
-    	<div class="act">
-            <p class="title">全部活动</ps>
+            <div class="act">
+                <p class="title">全部活动</p>
+                <div class="content">
+                    <ul>
+                        <volist name="info" id="i">
+                            <li <eq name="i.status" value="1">class="be" <else/>class="end"</eq> >
+                            <a href="{:U('Activity/profile?id='.$i['id'])}">  <img src="__PUBLIC__/{$i.pic}"/> </p></a>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+        </div>
+    	<div class="act hide">
+            <p class="title">进行中</p>
             <div class="content">
                 <ul>
-                    <volist name="info" id="i">
-                        <li class="be"> <a href="{$i.url}"> <img src="__PUBLIC__//{$i.pic}" /> <p> </p> </a> </li>
+                    <volist name="infos" id="ii">
+                        <li class="be">
+                            <a href="{:U('Activity/profile?id='.$ii['id'])}"> <img src="__PUBLIC__/{$ii.pic}" /><p></p></a>
+                        </li>
                     </volist>
                 </ul>
             </div>
         </div>
     	<div class="act hide">
-            <p class="title">进行中</ps>
+            <p class="title">已结束</p>
             <div class="content">
                 <ul>
-                    <volist name="info" id="i">
-                        <li class="be"> <a href="{$i.url}"> <img src="__PUBLIC__//{$i.pic}" /> <p> </p> </a> </li>
-                    </volist>
-                </ul>
-            </div>
-        </div>
-    	<div class="act hide">
-            <p class="title">已结束</ps>
-            <div class="content">
-                <ul>
-                    <volist name="info" id="i">
-                        <li class="end"> <a href="{$i.url}"> <img src="__PUBLIC__//{$i.pic}" /> <p> </p> </a> </li>
+                    <volist name="infop" id="is">
+                        <li class="end"> <a href="{:U('Activity/profile?id='.$is['id'])}"> <img src="__PUBLIC__//{$is.pic}" /> <p> </p> </a> </li>
                     </volist>
                 </ul>
             </div>
@@ -67,8 +69,8 @@
     </div>
 </div>
 <div class="copyright"></div> 
-<script type="text/javascript" src="__PUBLIC__//js/jquery.min.js" ></script>
-<script type="text/javascript" src="__PUBLIC__//js/swipe.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/js/swipe.js" ></script>
 <script>
 $(function(){
 	/*幻灯片*/

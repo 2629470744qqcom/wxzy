@@ -7,7 +7,11 @@ class MagazineController extends Controller {
     	$info = M("magazine")->order('create_time DESC')->select();
     	$this->assign('info', $info);
 
-    	$infoEssence = M('magazine_slides')->find();
+		$infos = M("magazine")->order('create_time DESC')->where('is_essence = 1')->select();
+		//($infos);exit;
+		$this->assign('infos', $infos);
+
+    	$infoEssence = M('magazine_slides')->select();
     	$this->assign('infoEssence', $infoEssence);
 
         $this->display();
