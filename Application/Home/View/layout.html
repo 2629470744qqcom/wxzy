@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta name="description" content="">
+  	<title>{:C('site_name')}</title>
+	
+
+  	<link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+  	<script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+  	<script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+
+  	<style>
+  		.sidebar {
+  			font-size: 14px;
+  		}  		
+  	</style>
+</head>
+<body>
+	<div class="sui-layout">
+		<div class="sui-navbar">
+		  	<div class="navbar-inner"><a href="#" class="sui-brand">{:C("site_name")}</a>
+		    	<ul class="sui-nav pull-right">	      		
+		      		<li><a href="#">用户名称</a></li>		      		
+		      		<li><a href="#">修改秘密</a></li>
+		      		<li><a href="#">退出登录</a></li>
+		    	</ul>
+		  	</div>
+		</div>
+
+	  	<div class="sidebar">
+	  		<ul class="sui-nav nav-list">
+				<li class="nav-header">伟星</li>
+			  	<li <eq name="app_name" value="home">class="active"</eq>><a href="{:U('Index/index')}">后台首页</a></li>
+
+			  	<li class="nav-header">伟星历程</li>
+			  	<li <eq name="app_name" value="about_index">class="active"</eq>><a href="{:U('About/index')}">关于伟星</a></li>
+			  	<li <eq name="app_name" value="about_slides">class="active"</eq>><a href="{:U('About/slides')}">轮播图</a></li>
+
+			  	<li class="nav-header">杂志</li>
+			  	<li <eq name="app_name" value="magazine_index">class="active"</eq>><a href="{:U('Magazine/index')}">杂志列表</a></li>
+			  	<li <eq name="app_name" value="magazine_essence">class="active"</eq>><a href="{:U('Magazine/essence')}">精选期刊</a></li>
+
+			  	<li class="nav-header">活动</li>
+			  	<li <eq name="app_name" value="activity_index">class="active"</eq>><a href="{:U('Activity/index')}">活动列表</a></li>
+			  	<li <eq name="app_name" value="activity_slides">class="active"</eq>><a href="{:U('Activity/slides')}">轮播图</a></li>			  	
+
+			  	<li class="nav-header">项目管理</li>
+			  	<li <eq name="app_name" value="project_index">class="active"</eq>><a>项目列表</a></li>
+			  	<li <eq name="app_name" value="project_slides">class="active"</eq>><a>项目介绍轮播图</a></li>
+			</ul>
+	  	</div>
+	  	<div class="content">
+	  		{__CONTENT__}
+	  	</div>
+	</div>
+</body>
+</html>
+

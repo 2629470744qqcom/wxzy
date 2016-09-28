@@ -1,0 +1,52 @@
+<ul class="sui-breadcrumb">
+  <li><a href="{:U('Index/index')}">首页</a></li>
+  <li><a href="{:U('Magazine/index')}">活动</a></li>
+  <li class="active">活动列表</li>
+</ul>
+
+
+<a href="{:U('Magazine/Add')}" class="sui-btn btn-xlarge btn-success">添加</a>
+<br><br>
+
+<table class="sui-table table-bordered-simple">
+  <thead>
+    <tr>
+      <th>＃</th>
+      <th>标题</th>
+      <th>排序</th>
+      <th>封面图片</th>
+      <th>创建日期</th>
+      <th>编辑</th>
+      <th>删除</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<volist name="lists" id="v">
+	    <tr>
+	      <td>{$i}</td>
+	      <td>{$v.title}</td>
+	      <td>{$v.sort}</td>
+	      <td><img src="__PUBLIC__/{$v.pic}" alt="" style="max-width:100px;height:auto;"></td>
+	      <td>{$v.create_time|date="Y-m-d H:i:s",###}</td>
+	      <td>
+	      	<a href="{:U('Magazine/edit?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info" data-id="{$i}">编辑</a>
+	      </td>
+	      <td>
+      		<a href="{:U('Magazine/del?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info btn_del" data-id="{$i}">删除</a>
+	      </td>
+	    </tr>  		
+  	</volist>
+  </tbody>
+</table>
+
+
+<script type="text/javascript">
+	$(function(){
+		$(".btn_del").click(function(e){
+			if (!confirm("确认删除序号为："+ $(this).data('id') +"的杂志吗？")) {
+				return false;
+				e.preventDefault();
+			}
+		})
+	})
+</script>

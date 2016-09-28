@@ -1,0 +1,37 @@
+<ul class="sui-breadcrumb">
+  <li><a href="{:U('Index/index')}">首页</a></li>
+  <li><a href="{:U('About/index')}">伟星历程</a></li>
+  <li class="active">伟星列表</li>
+</ul>
+
+
+<form class="sui-form form-horizontal sui-validate" action="{:U('About/index')}" method="post" enctype="multipart/form-data">
+  <div class="control-group">
+    <label class="control-label">介绍标题：</label>
+    <div class="controls">
+      <input class="input-xxlarge" name="title" type='text' data-rules="required|minlength=2" value="{$info.title}" />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">介绍说明：</label>
+    <div class="controls">
+      <textarea class='input-xxlarge' name="desc" data-rules='required' style="height: 190px;">{$info.desc}</textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">底部图片：</label>
+    <div class="controls">
+    	<if condition="$info.pic"><img src="__PUBLIC__/{$info.pic}" alt="" style="max-width:200px; height:auto;"><br/><br></if>
+      <input type="file" name="pic" class="input-xlarge">
+    </div>
+  </div>
+
+  <br><br>
+  <div class="control-group">
+  	<label class="control-label"></label>
+    <div class="controls">
+      <button class="sui-btn btn-primary btn-xlarge" type="submit">保存</button>
+      <a href="{:U('Index/index')}"><button class="sui-btn btn-primary btn-xlarge" type="button">取消</button></a>
+    </div>
+  </div>
+</form> 

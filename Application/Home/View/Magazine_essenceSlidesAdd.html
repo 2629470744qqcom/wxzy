@@ -1,0 +1,37 @@
+<ul class="sui-breadcrumb">
+  <li><a href="{:U('Index/index')}">首页</a></li>
+  <li><a href="{:U('About/index')}">杂志</a></li>
+  <li class="active">精选杂志</li>
+</ul>
+
+
+<form class="sui-form form-horizontal sui-validate" action="{$action_url}" method="post" enctype="multipart/form-data">
+  <div class="control-group">
+    <label class="control-label">链接：</label>
+    <div class="controls">
+      <input class="input-xxlarge" name="url" type='text' value="{$info.url}" />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">排序：</label>
+    <div class="controls">
+      <input class="input-xxlarge" name="sort" type='number' value="{$info.sort|default=10}" />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">图片：</label>
+    <div class="controls">
+    	<if condition="$info and $info.pic"><img src="__PUBLIC__/{$info.pic}" alt="" style="max-width:200px; height:auto;"><br/><br></if>
+      <input type="file" name="pic" class="input-xlarge">
+    </div>
+  </div>
+	<input type="hidden" name="id" value="{$info.id}">
+  <br><br>
+  <div class="control-group">
+  	<label class="control-label"></label>
+    <div class="controls">
+      <button class="sui-btn btn-primary btn-xlarge" type="submit">保存</button>
+      <a href="{:U('magazine/essence')}"><button class="sui-btn btn-primary btn-xlarge" type="button">取消</button></a>
+    </div>
+  </div>
+</form> 
