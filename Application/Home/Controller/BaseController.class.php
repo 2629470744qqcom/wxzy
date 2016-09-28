@@ -9,7 +9,10 @@ class BaseController extends Controller {
             if ('login' != ACTION_NAME) {
                 $this->redirect("Base/login");
             }
+
         }
+        
+        $this->assign('username', M('admins')->where('id='.session("current_user_id"))->getField('name'));
     }
 
     protected function uploadImg($file_name)
@@ -101,10 +104,14 @@ class BaseController extends Controller {
     public function login()
     {
         if (IS_POST) {
-            if (I("post.name") == M('admins')->where("name=".I('post.name')->getField('name')) and 
-                md5($name . '_WxzY_' . $pwd) == M('admins')->where('name='.I('post.name'))->getField("password")) {
-                session("current_user_id", M('admins')->where('name='.I('post.name'))->getField('id'));
-                session("current_user_name", I('post.name'));
+            $name = I('post.name');
+            $pwd = I('post.passwd');
+
+            if ($name == M('admins')->where('name="'.$name.'"')->getField('name') and 
+                md5($name . '_WxzY_' . $pwd) == M('admins')->where('name="'.$name.'"')->getField("password")) {
+
+                session("current_user_id", M('admins')->where('name="'.$name.'"')->getField('id'));
+                session("current_user_name", $name);
 
                 $this->redirect("Index/index");
             }
@@ -134,7 +141,10 @@ class BaseController extends Controller {
     {
         if (IS_POST) {
             if (I("post.name")) {
+                session("current_user_name", I("post.name"));
                 M('admins')->where('id='.session("current_user_id"))->setField("name", I("post.name"));
+                M('admins')->where('id='.session("current_user_id"))->setField("password", md5(session("current_user_name"). '_WxzY_' . I("post.passwd")));
+
 
                 $this->success("用户名更改成功");
                 $this->redirect("Index/index");
