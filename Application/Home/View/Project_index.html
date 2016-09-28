@@ -1,11 +1,11 @@
 <ul class="sui-breadcrumb">
   <li><a href="{:U('Index/index')}">首页</a></li>
-  <li><a href="{:U('Magazine/index')}">活动</a></li>
-  <li class="active">活动列表</li>
+  <li><a href="{:U('Project/index')}">项目</a></li>
+  <li class="active">项目列表</li>
 </ul>
 
 
-<a href="{:U('Magazine/Add')}" class="sui-btn btn-xlarge btn-success">添加</a>
+<a href="{:U('Project/Add')}" class="sui-btn btn-xlarge btn-success">添加</a>
 <br><br>
 
 <table class="sui-table table-bordered-simple">
@@ -13,8 +13,11 @@
     <tr>
       <th>＃</th>
       <th>标题</th>
+      <th>类型</th>
       <th>排序</th>
       <th>封面图片</th>
+      <th>电话</th>
+      <th>是否有720全景</th>
       <th>创建日期</th>
       <th>编辑</th>
       <th>删除</th>
@@ -25,14 +28,17 @@
 	    <tr>
 	      <td>{$i}</td>
 	      <td>{$v.title}</td>
+	      <td>{$v.type}</td>
 	      <td>{$v.sort}</td>
 	      <td><img src="__PUBLIC__/{$v.pic}" alt="" style="max-width:100px;height:auto;"></td>
+	      <td>{$v.tel}</td>
+	      <td><if condition="$v.url_720 != ''">有<else/>无</if></td>
 	      <td>{$v.create_time|date="Y-m-d H:i:s",###}</td>
 	      <td>
-	      	<a href="{:U('Activity/edit?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info" data-id="{$i}">编辑</a>
+	      	<a href="{:U('Project/edit?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info" data-id="{$i}">编辑</a>
 	      </td>
 	      <td>
-      		<a href="{:U('Activity/del?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info btn_del" data-id="{$i}">删除</a>
+      		<a href="{:U('Project/del?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info btn_del" data-id="{$i}">删除</a>
 	      </td>
 	    </tr>  		
   	</volist>
@@ -43,7 +49,7 @@
 <script type="text/javascript">
 	$(function(){
 		$(".btn_del").click(function(e){
-			if (!confirm("确认删除序号为："+ $(this).data('id') +"的杂志吗？")) {
+			if (!confirm("确认删除序号为："+ $(this).data('id') +"的项目吗？")) {
 				return false;
 				e.preventDefault();
 			}

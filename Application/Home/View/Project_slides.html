@@ -1,11 +1,11 @@
 <ul class="sui-breadcrumb">
   <li><a href="{:U('Index/index')}">首页</a></li>
-  <li><a href="{:U('About/index')}">伟星历程</a></li>
-  <li class="active">伟星历程轮播图</li>
+  <li><a href="{:U('Project/index')}">项目</a></li>
+  <li class="active">项目轮播图</li>
 </ul>
 
 
-<a href="{:U('Activity/slidesAdd')}" class="sui-btn btn-xlarge btn-success">添加</a>
+<a href="{:U('Project/slidesAdd')}" class="sui-btn btn-xlarge btn-success">添加</a>
 <br><br>
 
 <table class="sui-table table-bordered-simple">
@@ -27,10 +27,10 @@
 	      <td>{$v.url}</td>
 	      <td>{$v.sort}</td>
 	      <td>
-	      	<a href="{:U('Activity/slidesEdit?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info" data-id="{$i}">编辑</a>
+	      	<a href="{:U('Project/slidesEdit?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info" data-id="{$i}">编辑</a>
 	      </td>
 	      <td>
-      		<a href="{:U('Activity/slidesDel?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info btn_del" data-id="{$i}">删除</a>
+      		<a href="{:U('Project/slidesDel?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info btn_del" data-id="{$i}">删除</a>
 	      </td>
 	    </tr>  		
   	</volist>
