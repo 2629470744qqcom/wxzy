@@ -15,6 +15,7 @@
       <th>标题</th>
       <th>排序</th>
       <th>封面图片</th>
+      <th>状态</th>
       <th>创建日期</th>
       <th>编辑</th>
       <th>删除</th>
@@ -27,6 +28,7 @@
 	      <td>{$v.title}</td>
 	      <td>{$v.sort}</td>
 	      <td><img src="__PUBLIC__/{$v.pic}" alt="" style="max-width:100px;height:auto;"></td>
+	      <td><eq name="v.status" value="1">进行中<else/>已结束</eq></td>
 	      <td>{$v.create_time|date="Y-m-d H:i:s",###}</td>
 	      <td>
 	      	<a href="{:U('Activity/edit?id='.$v['id'])}" class="sui-btn btn-xlarge btn-info" data-id="{$i}">编辑</a>

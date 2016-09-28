@@ -26,6 +26,13 @@
     </div>
   </div>
   <div class="control-group">
+    <label class="control-label">活动状态：</label>
+    <div class="controls">
+      <input type="radio" name="status" value="1" id="yes" <eq name="info.status" value="1">checked="checked"</eq> ><label for="yes">进行中</label>
+      <input type="radio" name="status" value="" id="no" <neq name="info.status" value="1">checked="checked"</neq> ><label for="no">已结束</label>
+    </div>
+  </div>
+  <div class="control-group">
     <label class="control-label">内容：</label>
     <div class="controls">
       <textarea id="editor_id" name="desc" style="width:700px;height:300px;">{$info.desc}</textarea>
