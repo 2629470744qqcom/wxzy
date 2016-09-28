@@ -140,6 +140,10 @@ class BaseController extends Controller {
     public function changeName()
     {
         if (IS_POST) {
+            if (I("post.passwd") != M('admins')->where('id='.session('current_user_id'))->getField("password")) {
+                $this->error("密码不正确，不能修改用户名");
+            }
+
             if (I("post.name")) {
                 session("current_user_name", I("post.name"));
                 M('admins')->where('id='.session("current_user_id"))->setField("name", I("post.name"));
