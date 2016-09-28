@@ -4,8 +4,6 @@ return array(
 	'TMPL_FILE_DEPR'   => '_',
 	'TMPL_STRIP_SPACE' => false,
 	//'LOG_RECORD'     => true,
-	'LAYOUT_ON'        => true,
-	'LAYOUT_NAME'      => 'layout',
 
 
     //数据库配置

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>伟星历程</title>
+<link rel="stylesheet" type="text/css" href="css/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+</head>
+<body>
+<div class="course"> 
+    <!--幻灯片开始-->
+    <div id="banner_box" class="box_swipe" >
+        <ul>
+            <li><a href="javascript:void(0);"> <img src="images/course.jpg" /></a> </li>
+            <li><a href="javascript:void(0);"> <img src="images/course.jpg" /></a> </li>
+            <li><a href="javascript:void(0);"> <img src="images/course.jpg" /></a> </li>
+        </ul>
+        <ol>
+            <li class="on"></li>
+            <li class=""></li>
+            <li class=""></li>
+        </ol>
+    </div>
+    <!--幻灯片结束-->
+    <div class="content">
+    	<ul>
+        	<li class="title">伟星历程</li>
+            <li class="text">
+            	<p>&nbsp;&nbsp;&nbsp;&nbsp;伟星房地产经过近10年的精心运作，现已形成了以房地产开发为核心业务、物业管理、中介、代理、广告策划为辅助业务的经营格局。在实际运作中，贯彻和深化“稳中求进、快中求好、风险控制第一”的经营理念，依托准确的产品定位、具备多项目的管理能力、良好的售后服务，一系列精品楼盘拔土矗立。</p>
+                <p><img src="images/course.jpg" /></p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="copyright"></div> 
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript" src="js/swipe.js" ></script>
+<script>
+$(function(){
+	/*幻灯片*/
+	new Swipe(document.getElementById('banner_box'), {
+		speed:500,
+		auto:3000,
+		callback: function(){
+			var lis = $(this.element).next("ol").children();
+			lis.removeClass("on").eq(this.index).addClass("on");
+		}
+	});
+});
+</script>
+</body>
+</html>
