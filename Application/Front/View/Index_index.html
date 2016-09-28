@@ -2,16 +2,38 @@
 <html>
 <head>
 	<title></title>
-
-	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.4.3/weui.min.css">	
+    <base href="" target="_blank">
+    <style>
+    	ul {
+    		list-style: none;
+    	}
+    	li {
+    		padding-top: 10px;
+    		padding-bottom: 10px;
+    	}
+    	li a {
+    		font-size: 35px !important;
+    		margin-left: 10px !important;
+    		margin-right: 10px !important;
+    		border-radius: 15px !important;
+    	}
+    </style>
 </head>
 <body>
-<div class="container">
-	<table class="table">
-		<tr>
-			231423
-		</tr>
-	</table>
-</div>
+	<ul>
+		<li>
+			<a href="{:U('About/index')}" class="weui_btn weui_btn_primary"><buttton class="btn btn-info form-control">首页</buttton></a>
+		</li>
+		<li>
+			<a href="{:U('Magazine/index')}" class="weui_btn weui_btn_primary"><buttton class="btn btn-info form-control">杂志</buttton></a>
+		</li>
+		<li>
+			<a href="{:U('Activity/index')}" class="weui_btn weui_btn_primary"><buttton class="btn btn-info form-control">活动</buttton></a>
+		</li>
+		<li>
+			<a href="{:U('Project/index')}" class="weui_btn weui_btn_primary"><buttton class="btn btn-info form-control">项目介绍</buttton></a>
+		</li>
+	</ul>
 </body>
 </html>
