@@ -10,9 +10,9 @@ class BaseController extends Controller {
                 $this->redirect("Base/login");
             }
 
+        } else {
+            $this->assign('username', M('admins')->where('id='.session("current_user_id"))->getField('name'));
         }
-        
-        $this->assign('username', M('admins')->where('id='.session("current_user_id"))->getField('name'));
     }
 
     protected function uploadImg($file_name)
