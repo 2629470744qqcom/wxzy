@@ -3,6 +3,15 @@ namespace Home\Controller;
 use Think\Controller;
 
 class BaseController extends Controller {
+    protected function _initialize()
+    {
+        if (!session("?current_user_id")) {
+            if ('login' != ACTION_NAME) {
+                $this->redirect("Base/login");
+            }
+        }
+    }
+
     protected function uploadImg($file_name)
     {
         $upload = new \Think\Upload();// 实例化上传类
@@ -81,5 +90,64 @@ class BaseController extends Controller {
         }
 
         return $info['savepath'].$info['savename'];
+    }
+
+
+
+
+
+
+
+    public function login()
+    {
+        if (IS_POST) {
+            if (I("post.name") == M('admins')->where("name=".I('post.name')->getField('name')) and 
+                md5($name . '_WxzY_' . $pwd) == M('admins')->where('name='.I('post.name'))->getField("password")) {
+                session("current_user_id", M('admins')->where('name='.I('post.name'))->getField('id'));
+                session("current_user_name", I('post.name'));
+
+                $this->redirect("Index/index");
+            }
+
+            $this->error("用户名或密码不正确");
+        }
+
+        layout('Base_layout'); // 临时关闭当前模板的布局功能
+        $this->display();
+    }
+
+    public function changePW()
+    {
+        if (IS_POST) {
+            if (I("post.passwd")) {
+                M('admins')->where('id='.session("current_user_id"))->setField("password", md5(session("current_user_name"). '_WxzY_' . I("post.passwd")));
+
+                $this->success("密码更改成功");
+                $this->redirect("Index/index");
+            }
+        }
+
+        $this->display();
+    }
+
+    public function changeName()
+    {
+        if (IS_POST) {
+            if (I("post.name")) {
+                M('admins')->where('id='.session("current_user_id"))->setField("name", I("post.name"));
+
+                $this->success("用户名更改成功");
+                $this->redirect("Index/index");
+            }
+        }
+
+        $this->display();
+    }
+
+    public function logout()
+    {
+        session(null);
+
+        $this->redirect('Base/login');
     }
 }
