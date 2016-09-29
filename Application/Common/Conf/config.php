@@ -1,6 +1,6 @@
 <?php
 return array(
-	'SHOW_PAGE_TRACE'  => true,
+	// 'SHOW_PAGE_TRACE'  => true,
 	'TMPL_FILE_DEPR'   => '_',
 	'TMPL_STRIP_SPACE' => false,
 	//'LOG_RECORD'     => true,
