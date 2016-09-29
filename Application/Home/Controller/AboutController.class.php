@@ -20,9 +20,10 @@ class AboutController extends BaseController {
 			    $about->add(); // 写入数据到数据库
 			}
 
-            header('Cache-Control:no-cache,must-revalidate');  
+            header('Cache-Control:no-cache,must-revalidate,no-store');  
             header('Pragma:no-cache'); 
-            
+            header("Expires:-1");
+
             $this->redirect("About/index");
     	}
 
