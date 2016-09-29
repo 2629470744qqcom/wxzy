@@ -19,6 +19,8 @@ class AboutController extends BaseController {
     		if($about->create()){
 			    $about->add(); // 写入数据到数据库
 			}
+
+            $this->redirect("About/index");
     	}
 
     	$info = M('about')->find();
