@@ -21,7 +21,7 @@
   <div class="control-group">
     <label class="control-label">底部图片：</label>
     <div class="controls">
-    	<if condition="$info.pic"><img src="__PUBLIC__/{$info.pic}" alt="" style="max-width:200px; height:auto;"><br/><br></if>
+    	<if condition="$info.pic"><img src="__PUBLIC__/{$info.pic}?v={:date}" alt="" style="max-width:200px; height:auto;"><br/><br></if>
       <input type="file" name="pic" class="input-xlarge">
     </div>
   </div>
