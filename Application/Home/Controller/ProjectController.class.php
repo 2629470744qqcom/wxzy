@@ -50,7 +50,7 @@ class ProjectController extends BaseController {
 
         $info = M('project')->where('id='.I('get.id'))->find();
 
-        $this->assign('info', $info);
+        $this->assign('info', $info);        
         $this->assign('action_url', U('Project/edit'));
         $this->assign('app_name', 'project_index');
 

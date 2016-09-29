@@ -13,7 +13,7 @@ class ActivityController extends Controller {
         $infop = M("activity")->where('status != 1')->select();
         $this->assign("infop", $infop);
 
-        $infoSlides = M('activity_slides')->select();
+        $infoSlides = M('activity_slides')->order('sort desc')->select();
         $this->assign('infoSlides', $infoSlides);
 
         $this->display();

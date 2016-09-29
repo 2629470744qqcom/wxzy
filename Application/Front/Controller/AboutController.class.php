@@ -8,7 +8,7 @@ class AboutController extends Controller {
     	$info = M("about")->find();
     	$this->assign("info", $info);
 
-    	$infoSlides = M('about_slides')->order('id desc')->limit(6)->select();
+    	$infoSlides = M('about_slides')->order('sort desc')->limit(6)->select();
     	$this->assign('infoSlides', $infoSlides);
 
 
