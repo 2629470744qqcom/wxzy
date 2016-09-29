@@ -33,7 +33,7 @@ class ActivityController extends BaseController {
                 unset($_POST['pic']);
             }
 
-            $_POST['desc'] = htmlspecialchars_decode($_POST['desc']);
+            
 
             $about = M('activity');
 
@@ -63,7 +63,7 @@ class ActivityController extends BaseController {
         if (IS_POST) {
             $_POST['pic'] = $this->uploadImg('activity_'.(M('about_slides')->max('id') + 1));
             
-            $_POST['desc'] = htmlspecialchars_decode($_POST['desc']);
+            
 
             $about = M('activity');
 

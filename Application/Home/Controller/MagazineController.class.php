@@ -24,7 +24,7 @@ class MagazineController extends BaseController {
             }
 
             $_POST['create_time'] = time();
-            $_POST['desc'] = htmlspecialchars_decode($_POST['desc']);
+            
 
             $about = M('magazine');
 
@@ -53,7 +53,7 @@ class MagazineController extends BaseController {
 		if (IS_POST) {
         	$_POST['pic'] = $this->uploadMagazineImg(strval(M('magazine')->max('id') + 1));
             $_POST['create_time'] = time();
-            $_POST['desc'] = htmlspecialchars_decode($_POST['desc']);
+            
             $about = M('magazine');
 
             if($about->create()){

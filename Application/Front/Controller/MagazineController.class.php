@@ -22,6 +22,8 @@ class MagazineController extends Controller {
     	$id = I('get.id');
 
     	$info = M('magazine')->find($id);
+        $info['desc'] = htmlspecialchars_decode($info['desc']);
+        
     	$this->assign('info', $info);
 
     	$this->display();

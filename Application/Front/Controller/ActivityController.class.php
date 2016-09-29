@@ -24,6 +24,7 @@ class ActivityController extends Controller {
     	$id = I('get.id');
 
     	$info = M('activity')->find($id);
+        $info['desc'] = htmlspecialchars_decode($info['desc']);
     	$this->assign('info', $info);
 
     	$this->display();

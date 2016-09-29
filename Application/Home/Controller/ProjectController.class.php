@@ -33,7 +33,7 @@ class ProjectController extends BaseController {
                 unset($_POST['pic']);
             }
 
-            $_POST['desc'] = htmlspecialchars_decode($_POST['desc']);
+            
             $about = M('project');
 
             if($about->create()){
@@ -61,7 +61,7 @@ class ProjectController extends BaseController {
     {
         if (IS_POST) {
             $_POST['pic'] = $this->uploadProjectImg('project_'.(M('about_slides')->max('id') + 1));
-            $_POST['desc'] = htmlspecialchars_decode($_POST['desc']);
+            
             $about = M('project');
 
             if($about->create()){

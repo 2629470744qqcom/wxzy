@@ -36,6 +36,9 @@ class ProjectController extends Controller {
 
     public function details(){
         $pro=M('Project a')->field('a.id,a.title,a.desc,a.pic,a.tel,a.url_720')->where('a.id='.I('get.id'))->find();
+
+        $pro['desc'] = htmlspecialchars_decode($pro['desc']);
+
         $this->assign('pro',$pro);
         $this->display();
     }
