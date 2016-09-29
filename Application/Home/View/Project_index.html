@@ -30,7 +30,7 @@
 	      <td>{$v.title}</td>
 	      <td>{$v.type}</td>
 	      <td>{$v.sort}</td>
-	      <td><img src="__PUBLIC__/{$v.pic}" alt="" style="max-width:100px;height:auto;"></td>
+	      <td><img src="__PUBLIC__/{$v.pic}?v={:time()}" alt="" style="max-width:100px;height:auto;"></td>
 	      <td>{$v.tel}</td>
 	      <td><if condition="$v.url_720 != ''">有<else/>无</if></td>
 	      <td>{$v.create_time|date="Y-m-d H:i:s",###}</td>
