@@ -32,7 +32,7 @@ class MagazineController extends BaseController {
                 $about->save(); // 写入数据到数据库
             }
 
-            $this->redirect('Magazine/Index');
+            $this->redirect('Magazine/index');
         } else {
             if (!I('get.id')) { 
                 $this->error("参数不正确");
