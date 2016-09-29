@@ -17,9 +17,9 @@
     <div class="controls">
       <select name="type" data-rules="required">
         <option value="">-- 请选择类别 --</option>
-        <option value="别墅" <eq name="{$info.type}" value="别墅">selected</eq>>别墅</option>
-        <option value="高层" <eq name="{$info.type}" value="高层">selected</eq>>高层</option>
-        <option value="商业" <eq name="{$info.type}" value="商业">selected</eq>>商业</option>
+        <option value="别墅" <eq name="info['type']" value="别墅">selected</eq>>别墅</option>
+        <option value="高层" <eq name="info['type']" value="高层">selected</eq>>高层</option>
+        <option value="商业" <eq name="info['type']" value="商业">selected</eq>>商业</option>
       </select>
     </div>
   </div>
