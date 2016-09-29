@@ -5,18 +5,19 @@
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <title>杂志</title>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css" media="all">
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/css.css" />
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/cssf.css" />
 </head>
 <body>
 <div class="magazine"> 
     <div class="name"> <img src="__PUBLIC__/images/name.jpg" /> </div>
     <div class="change">
-    	<ul class="clearfix tit">
-        	<li data-id="0"> <p> <img src="__PUBLIC__/images/tit1.png" /> </p> <p>随手拍</p> </li>
-        	<li data-id="1"> <p> <img src="__PUBLIC__/images/tit2.png" /> </p> <p>会惠生活</p> </li>
+        <ul class="clearfix tit">
+            <li data-id="0"> <p> <img src="__PUBLIC__/images/tit1.png" /> </p> <p>随手拍</p> </li>
+            <li data-id="1"> <p> <img src="__PUBLIC__/images/tit2.png" /> </p> <p>会惠生活</p> </li>
         </ul>
         <ul class="pic">
-        	<li> <img src="__PUBLIC__/images/magazine_ad.jpg" /> </li>
+            <li> <img src="__PUBLIC__/images/magazine_ad.jpg" /> </li>
             <li class="hide"> <img src="__PUBLIC__/images/course.jpg" /> </li>
         </ul>
     </div>
@@ -25,21 +26,21 @@
     <div id="banner_box" class="box_swipe" >
         <ul>
             <volist name="infos" id="i">
-                <li><a href="{:U('Magazine/profile?id='.$i['id'])}" target="_blank"> <img src="__PUBLIC__/{$i.pic}" /></a> </li>
+                <li> <a href="{:U('Magazine/profile?id='.$i['id'])}" target="_blank"> <img src="__PUBLIC__/{$i.pic}" /></a></li>
             </volist>
         </ul>
         <ol>
-            <volist name="info" id="is">
+            <volist name="infos" id="is">
                 <li class="on"></li>
             </volist>
         </ol>
-        <p class="name"><a href="{:U('Magazine/profile?id='.$info['id'])}">第【{$infos.id}】期{$infos.title}</a></p>
+        <p class="name"><a href="{:U('Magazine/profile?id='.$infoEssence['id'])}" target="_blank">{$infoEssence.title}</a></p>
         <p class="choice_right"></p>
     </div>
     <div class="scenery">
-    	<ul>
+        <ul>
             <volist name="info" id="s">
-        	   <li><a href="{:U('Magazine/profile?id='.$s['id'])}" target="_blank"><img src="__PUBLIC__/{$s.pic}" /> <p class="tit">[{$s.title}]</p></a></li>
+               <li ><a href="{:U('Magazine/profile?id='.$s['id'])}" target="_blank"><img src="__PUBLIC__/{$s.pic}" /><p class="tit">{$s.title}</p><br/><br/></a></li>
             </volist>
         </ul>
     </div>
@@ -47,23 +48,23 @@
 <div class="copyright"></div>
 <script type="text/javascript" src="__PUBLIC__/js/jquery.min.js" ></script>
 <script type="text/javascript" src="__PUBLIC__/js/swipe.js" ></script>
-<script>
+<script type="text/javascript">
 $(function(){
-	/*幻灯片*/
-	new Swipe(document.getElementById('banner_box'), {
-		speed:500,
-		auto:3000,
-		callback: function(){
-			var lis = $(this.element).next("ol").children();
-			lis.removeClass("on").eq(this.index).addClass("on");
-		}
-	});
-	//切换
-	$('.change .tit li').click(function(){
-		var did = $(this).data('id');
-		$('.change .pic li').hide();
-		$('.change .pic li').eq(did).show();
-	});
+    /*幻灯片*/
+    new Swipe(document.getElementById('banner_box'), {
+        speed:500,
+        auto:2000,
+        callback: function(){
+            var lis = $(this.element).next("ol").children();
+            lis.removeClass("on").eq(this.index).addClass("on");
+        }
+    });
+    //切换
+    $('.change .tit li').click(function(){
+        var did = $(this).data('id');
+        $('.change .pic li').hide();
+        $('.change .pic li').eq(did).show();
+    });
 });
 </script>
 </body>
