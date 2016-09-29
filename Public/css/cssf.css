@@ -1,0 +1,98 @@
+@charset "utf-8";
+html, body { width: 100%; min-height: 100%; font-family:"微软雅黑"; }
+body{ background-color:#eeeeee; font-size:14px;}
+i,em{ font-style:normal;}
+/** ckbox & rdio **/
+.ckbox, .rdio {position: relative;}
+input[type="checkbox"], input[type="radio"] {opacity: 0;}
+.ckbox label,.rdio label {cursor: pointer;}
+.ckbox label:before {width:14px; height:14px; position:absolute; top:4px; left:0; content:''; display:inline-block; background: #dcdcdc;}
+/** checkbox **/
+.ckbox{ margin-right:10px;}
+.ckbox label{ margin-left:12px;}
+.ckbox input[type="checkbox"]:checked + label:before{border-color: #999;}
+.ckbox input[type="checkbox"]:checked + label::after{content: ""; position:absolute; top:4px; left:0px; display: inline-block;font-size: 11px;width: 14px;height: 14px;color: #333; background:#09cdf7 url(../images/ckbox.png) no-repeat center center; background-size:14px;}
+/** radio **/
+.rdio{ margin-right:14px;}
+.rdio label{ margin-left:14px;}
+.rdio label:before {width:14px; height:14px; position: absolute; top:4px;left: 0;content:''; display: inline-block; background: #dcdcdc;}
+.rdio input[type="radio"]:checked + label::after {content: '';position: absolute;top: 4px;left: 0px;display: inline-block; font-size: 11px;width: 14px;height: 14px;background:#09cdf7 url(../images/ckbox.png) no-repeat center center; background-size:14px;}
+
+/*** 幻灯片 开始***/
+.box_swipe>ol{height:30px;z-index:10;bottom:0px; background-color:rgba(0,0,0,0.4);}
+.box_swipe>ol>li{margin:1px;width:7px;height:7px;margin-top:12px;background-color:#cccccc;-moz-border-radius:100%;-webkit-border-radius: 100%;border-radius: 100%;}
+.box_swipe>ol>li.on{background-color:#ffffff;}
+/** 幻灯片 结束 **/
+
+/** course 伟星历程 **/
+.course{ width:100%; margin:0px auto; position:relative;}
+.course .content{ width:94%; margin:20px auto; position:relative;}
+.course .content .title{ text-align:center; line-height:40px; font-size:20px;}
+.course .content .text p{ line-height:22px;}
+
+/** magazine 杂志 **/
+.magazine{ width:100%; margin:0px auto; position:relative;}
+.change{ width:94%; margin:20px auto;}
+.change .tit li{ width:50%; float:left; text-align:center; margin-bottom:10px;}
+.change .tit li p{ width:80px; margin:0px auto; line-height:30px;}
+.choice_tit{ line-height:40px; text-align:center;}
+.magazine .box_swipe>ol{background-color: transparent;}
+.box_swipe .name{ width:100%; height:36px; line-height:36px; font-size:16px; text-align:center; position:absolute; top:0; left:0; background-color:rgba(1,217,216,0.8); color:#fff; z-index:10;}
+.box_swipe .name a{ color:#ffffff;}
+.box_swipe .choice_right{ width:80px; height:60px; background:url(../images/choice_right.png) no-repeat center center;background-size:100%; position:absolute; top:0; right:0; z-index:15;}
+.scenery{ width:94%; margin:10px auto; position:relative;}
+.scenery img{ display:block; width:100%;}
+.scenery .tit{ width:100%; height:36px; line-height:36px; text-align:center; background-color:#666666; color:#fff;top:0; left:0;}
+
+/** details 详情页 **/
+.details{ width:100%; min-height:90%; background-color:#fff;}
+.details ul{ width:94%; margin:0px auto; padding:20px 0;}
+.details .title{ line-height:30px; font-size:22px; margin-bottom:10px;}
+.details .date{ color:#999; line-height:40px;}
+.details .date a{ color:#6482a8;}
+.details .content p{ line-height:26px;}
+ 
+/** activity 活动 **/
+.activity{ width:100%; margin:0px auto; position:relative;}
+.activity .tit{ width:100%; height:48px; line-height:48px; background-color:#ffffff;}
+.activity .tit li{ float:left; width:33.3%; text-align:center; font-size:16px;}
+.activity .tit li.on a{ color:#35bfbd;}
+.activity .cont .title{ line-height:60px; font-size:20px; text-align:center;}
+.activity .cont .content{ width:94%; margin:0px auto;}
+.activity .cont .content li{ margin-bottom:10px; width:100%; height:140px; position:relative;}
+.activity .cont .content li:last-child{ margin-bottom:0;}
+.activity .cont .content li img{ height:140px;}
+.activity .cont .content p{ width:100%; height:140px; position:absolute; top:0; left:0; z-index:10;}
+.activity .cont .content .be p{ background:rgba(255,255,255,0.4) url(../images/be.png) no-repeat center center; background-size:100%;}
+.activity .cont .content .end p{ background:rgba(255,255,255,0.4) url(../images/end.png) no-repeat center center; background-size:100%;}
+
+/** project 项目介绍 **/
+.project{ width:100%; margin:0px auto; position:relative;}
+.project .icon{ width:94%; margin:10px auto; border-bottom:1px solid #dcdcdc;}
+.project .icon ul{ width:80%; margin:0px auto; position:relative;}
+.project .icon li{ float:left; width:25%;}
+.project .icon li i{ display:block; width:80px; height:80px; margin:0px auto; background-image:url(../images/icon1.png); background-repeat:no-repeat; background-size:100%;}
+.project .icon li.on i{ background-image:url(../images/icon2.png);}
+.project .icon li i.ico1{ background-position:0 0;}
+.project .icon li i.ico2{ background-position:0 -80px;}
+.project .icon li i.ico3{ background-position:0 -160px;}
+.project .icon li i.ico4{ background-position:0 -240px;}
+.project .icon li p{ text-align:center; line-height:40px;}
+.project .list{ width:94%; margin:0px auto; position:relative;}
+.project .list .title{ width:100%; line-height:16px; margin-bottom:10px;}
+.project .list .title i{ display:block; width:8px; height:16px; float:left; border-left:1px solid #dcdcdc; border-right:1px solid #dcdcdc; margin-right:8px;}
+.project .list li{ position:relative; width:100%; margin-bottom:10px;}
+.project .list .up p{ width:70%; position:absolute; top:2%; left:15%;}
+.project .tel{ padding:10px; background-color:#fff; line-height:36px; font-size:16px; margin-bottom:14px;}
+.project .tel a{ color:#1eaa39;}
+.project .cont{ padding:10px; background-color:#fff; font-size:16px;}
+.project .cont p{ line-height:28px;}
+
+
+.copyright{ width:100%; height:60px; background:url(../images/copyright.png) no-repeat center center; background-size:100%;}
+@media screen and (max-width: 320px) {
+}
+@media screen and (min-width: 361px) and (max-width: 376px) {
+}
+@media screen and (min-width: 377px) and (max-width: 414px) {
+}
