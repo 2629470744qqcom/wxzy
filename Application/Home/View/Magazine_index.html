@@ -5,7 +5,7 @@
 </ul>
 
 
-<a href="{:U('Magazine/Add')}" class="sui-btn btn-xlarge btn-success">添加</a>
+<a href="{:U('Magazine/add')}" class="sui-btn btn-xlarge btn-success">添加</a>
 <br><br>
 
 <table class="sui-table table-bordered-simple">
@@ -38,8 +38,9 @@
   	</volist>
   </tbody>
 </table>
-
-
+<div class="manu">
+	　　{$page}
+</div>
 <script type="text/javascript">
 	$(function(){
 		$(".btn_del").click(function(e){

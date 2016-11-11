@@ -18,12 +18,11 @@
     <div class="name"> <img src="__PUBLIC__/images/name.jpg" /> </div>
     <div class="change">
         <ul class="clearfix tit">
-            <li data-id="0"> <p> <img src="__PUBLIC__/images/tit1.png" /> </p> <p>随手拍</p> </li>
-            <li data-id="1"> <p> <img src="__PUBLIC__/images/tit2.png" /> </p> <p>会惠生活</p> </li>
+            <li data-id="0"><a href="#"><p> <img src="__PUBLIC__/images/tit1.png"  style="width:66px;"  /> </p> <p>随手拍</p></a>  </li>
+            <li data-id="1"> <a href="#"><p> <img src="__PUBLIC__/images/tit2.png"  style="width:66px;"    /> </p> <p>惠生活</p></a> </li>
         </ul>
         <ul class="pic">
-            <li> <img src="__PUBLIC__/images/magazine_ad.jpg" /> </li>
-            <li class="hide"> <img src="__PUBLIC__/images/course.jpg" /> </li>
+            <li> <img src="__PUBLIC__/{$face.pic}" /> </li>
         </ul>
     </div>
     <!-- 精选期刊-->
@@ -31,7 +30,11 @@
     <div id="banner_box" class="box_swipe" >
         <ul>
             <volist name="infos" id="i">
-                <li> <a href="{:U('Magazine/profile?id='.$i['id'])}" target="_blank"> <img src="__PUBLIC__/{$i.pic}" /></a></li>
+                <li> <a href="{:U('Magazine/profile?id='.$i['id'])}" target="_blank"> <img src="__PUBLIC__/{$i.pic}" />
+                    <div class="title_bg" style="height:30px; line-height:30px;">
+                        {$i.s_title}
+                    </div>
+                </a></li>
             </volist>
         </ul>
         <ol>
@@ -64,12 +67,7 @@ $(function(){
             lis.removeClass("on").eq(this.index).addClass("on");
         }
     });
-    //切换
-    $('.change .tit li').click(function(){
-        var did = $(this).data('id');
-        $('.change .pic li').hide();
-        $('.change .pic li').eq(did).show();
-    });
+
 });
 </script>
 </body>

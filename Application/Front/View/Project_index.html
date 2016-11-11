@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     <title>项目介绍</title>
-    <link rel="stylesheet" type="text/css" href="/Public/css/common.css" media="all">
-    <link rel="stylesheet" type="text/css" href="/Public/css/css.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/css.css" />
 </head>
 <body>
 <div class="project">
@@ -13,7 +13,11 @@
     <div id="banner_box" class="box_swipe" >
         <ul class="clearfix">
             <volist name="slide" id="s">
-                <li><a href="{$s.url}"> <img src="/Public/{$s.pic}"  /></a> </li>
+                <li><a href="{$s.url}"> <img src="__PUBLIC__/{$s.pic}"  />
+                    <div class="title_bg" style="height:30px; line-height:30px;">
+                        {$s.title}
+                    </div>
+                </a> </li>
             </volist>
         </ul>
         <ol>
@@ -23,55 +27,52 @@
         </ol>
     </div>
     <!--幻灯片结束-->
-    <div class="icon">
+       <div class="icon">
         <ul class="clearfix">
-            <li class="on">
-                <a href="{:U('Project/index')}" target="_self">
-                    <i class="ico1"></i>
-                    <p>
-                        全部
-                    </p>
-                </a>
-            </li>
-            <li>
-                <a href="{:U('Project/index?category=bs')}" target="_self">
-                    <i class="ico2"></i>
-                    <p>别墅</p>
-                </a>
-            </li>
-            <li><a href="{:U('Project/index?category=gc')}" target="_self">
-                <i class="ico3"></i>
-                <p>高层</p>
-            </a>
-            </li>
-            <li>
-                <a href="{:U('Project/index?category=sy')}" target="_self">
-                    <i class="ico4"></i>
-                    <p>商业</p>
-                </a>
-            </li>
+            <li data-id='0' class="on"> <a> <i class="ico1"></i> <p>全部</p> </a> </li>
+            <li data-id='1'> <a> <i class="ico2"></i> <p>别墅</p> </a> </li>
+            <li data-id='2'> <a> <i class="ico3"></i> <p>高层</p> </a> </li>
+            <li data-id='3'> <a> <i class="ico4"></i> <p>商业</p> </a> </li>
         </ul>
     </div>
-    <div class="list" >
-        <div class="title clearfix" > <i></i>
-            <switch name="current_category">
-                <case value="bs">别墅</case>
-                <case value="gc">高层</case>
-                <case value="sy">商业</case>
-                <default />全部
-            </switch>
+    <div class="list">
+        <div>
+            <div class="title clearfix"> <i></i> 全部 </div>
+            <ul class="up">
+                <volist name="full" id="full">
+                    <li><a href="{:U('Project/details?id='.$full['id'])}"><img src="__PUBLIC__/{$full.pic}"><p></p></a></li>
+                </volist>
+            </ul>
         </div>
-        <ul class="up">
-            <volist name="full" id="full">
-                <li><a href="{:U('Project/details?id='.$full['id'])}"><img src="/Public/{$full.pic}"><p></p></a></li>
-            </volist>
-        </ul>
+        <div class="hide">
+            <div class="title clearfix"> <i></i> 别墅 </div>
+            <ul class="up">
+                <volist name="house" id="full">
+                    <li><a href="{:U('Project/details?id='.$full['id'])}"><img src="__PUBLIC__/{$full.pic}"><p></p></a></li>
+                </volist>
+            </ul>
+        </div>
+        <div class="hide">
+            <div class="title clearfix"> <i></i> 高层 </div>
+            <ul class="up">
+                <volist name="high" id="full">
+                    <li><a href="{:U('Project/details?id='.$full['id'])}"><img src="__PUBLIC__/{$full.pic}"><p></p></a></li>
+                </volist>
+            </ul>
+        </div>
+        <div class="hide">
+            <div class="title clearfix"> <i></i> 商业 </div>
+            <ul class="up">
+                <volist name="shop" id="full">
+                    <li><a href="{:U('Project/details?id='.$full['id'])}"><img src="__PUBLIC__/{$full.pic}"><p></p></a></li>
+                </volist>
+            </ul>
+        </div>
     </div>
-
 </div>
 <div class="copyright"></div>
-<script type="text/javascript" src="/Public/js/jquery.min.js" ></script>
-<script type="text/javascript" src="/Public/js/swipe.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/js/swipe.js" ></script>
 <script type="text/javascript">
     $(document).ready(function(){
         /*幻灯片*/
@@ -84,12 +85,12 @@
             }
         });
         //切换
-        $('.tit li').click(function(){
-            $('.tit li').removeClass('on');
+        $('.icon li').click(function(){
+            $('.icon li').removeClass('on');
             $(this).addClass('on');
             var did = $(this).data('id');
-            $('.cont .act').hide();
-            $('.cont .act').eq(did).show();
+            $('.list > div').hide();
+            $('.list > div').eq(did).show();
         });
     });
 </script>

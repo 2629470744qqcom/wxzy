@@ -5,13 +5,14 @@
 </ul>
 
 
-<a href="{:U('About/Add')}" class="sui-btn btn-xlarge btn-success">添加</a>
+<a href="{:U('About/add')}" class="sui-btn btn-xlarge btn-success">添加</a>
 <br><br>
 
 <table class="sui-table table-bordered-simple">
   <thead>
     <tr>
       <th>＃</th>
+      <th>标题</th>
       <th>图片</th>
       <th>链接</th>
       <th>排序</th>
@@ -23,6 +24,7 @@
   	<volist name="lists" id="v">
 	    <tr>
 	      <td>{$i}</td>
+	      <td>{$v.title}</td>
 	      <td><img src="__PUBLIC__/{$v.pic}" alt="" style="max-width:100px;height:auto;"></td>
 	      <td>{$v.url}</td>
 	      <td>{$v.sort}</td>
@@ -37,6 +39,9 @@
   </tbody>
 </table>
 
+<div class="manu">
+	{$page}
+</div>
 
 <script type="text/javascript">
 	$(function(){

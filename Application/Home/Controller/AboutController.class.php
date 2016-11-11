@@ -6,15 +6,8 @@ use Home\Controller\BaseController;
 class AboutController extends BaseController {
     public function index(){
     	if (IS_POST) {
-            $pic = M('about')->getfield('pic');
+
             M('about')->where('1')->delete();
-
-            if ($_FILES['pic']['name']) {
-                $_POST['pic'] = $this->uploadImg("about");
-            } else {
-                $_POST['pic'] = $pic;
-            }
-
     		$about = M('about');
     		if($about->create()){
 			    $about->add(); // 写入数据到数据库
@@ -32,8 +25,11 @@ class AboutController extends BaseController {
 
     public function slides()
     {
-        $lists = M('about_slides')->order('sort Desc')->select();
-
+        $m=M('about_slides');
+        $p = getpage($m,$where,12);
+        $show = $p->show();
+        $this->assign('page',$show);
+        $lists = $m->field(true)->order('sort Desc')->select();
         $this->assign('lists', $lists);
         $this->assign('app_name', 'about_slides');
 
@@ -87,7 +83,7 @@ class AboutController extends BaseController {
         if (IS_POST) {
             $_POST['pic'] = $this->uploadImg('about_slides_'.(M('about_slides')->max('id') + 1));
             $about = M('about_slides');
-
+          
             if($about->create()){
                 $about->add(); // 写入数据到数据库
             }

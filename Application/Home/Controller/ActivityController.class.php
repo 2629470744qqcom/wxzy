@@ -4,15 +4,24 @@ use Think\Controller;
 use Home\Controller\BaseController;
 
 class ActivityController extends BaseController {
-	public function index () 
-	{
-		$lists = M('activity')->order('create_time Desc')->select();
+	public function index ()
+    {
+        $m=M('activity');
+        if(IS_GET){
+            $where=array();
+            $title=I('get.title');
+            if($title)
+                $where['title'] = array('like','%'.$title.'%');
+            $p = getpage($m,$where,12);
+            $show = $p->show();
+            $this->assign('page',$show);
 
-        $this->assign('lists', $lists);
-        $this->assign('app_name', 'activity_index');
-
-		$this->display();
-	}
+            $lists = $m->order('create_time Desc')->select();
+            $this->assign('lists', $lists);
+            $this->assign('app_name', 'activity_index');
+            $this->display();
+        }
+    }
 
     public function del($id)
     {
@@ -61,8 +70,8 @@ class ActivityController extends BaseController {
     public function add ()
     {
         if (IS_POST) {
-            $_POST['pic'] = $this->uploadImg('activity_'.(M('about_slides')->max('id') + 1));
-            
+            $_POST['pic'] = $this->uploadActivityImg(strval(M('activity')->max('id') + 1));
+            $_POST['create_time'] = time();
             
 
             $about = M('activity');
@@ -93,7 +102,11 @@ class ActivityController extends BaseController {
 
 	public function slides()
     {
-        $lists = M('activity_slides')->order('sort Desc')->select();
+        $m=M('activity_slides');
+        $p = getpage($m,$where,12);
+        $show = $p->show();
+        $this->assign('page',$show);
+		$lists = $m->order('sort Desc')->select();
 
         $this->assign('lists', $lists);
         $this->assign('app_name', 'activity_slides');
@@ -105,7 +118,7 @@ class ActivityController extends BaseController {
     {
         if ($id) {
             unlink($_SERVER['DOCUMENT_ROOT'].'/Public/'.M('activity_slides')->where('id='.$id)->getfield('pic'));
-            M('about_slides')->delete($id);
+            M('activity_slides')->delete($id);
         }
 
         $this->redirect("Activity/slides");

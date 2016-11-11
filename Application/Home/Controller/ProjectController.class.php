@@ -6,7 +6,11 @@ use Home\Controller\BaseController;
 class ProjectController extends BaseController {
 	public function index () 
 	{
-		$lists = M('project')->order('create_time Desc')->select();
+		$m=M('project');
+        $p = getpage($m,$where,12);
+        $show = $p->show();
+        $this->assign('page',$show);
+		$lists = $m->order('create_time Desc')->select();
 
         $this->assign('lists', $lists);
         $this->assign('app_name', 'project_index');
@@ -60,15 +64,15 @@ class ProjectController extends BaseController {
     public function add ()
     {
         if (IS_POST) {
-            $_POST['pic'] = $this->uploadProjectImg('project_'.(M('about_slides')->max('id') + 1));
-            
+            $_POST['pic'] = $this->uploadProjectImg(strval(M('project')->max('id') + 1));
+            $_POST['create_time'] = time();
             $about = M('project');
 
             if($about->create()){
                 $about->add(); // 写入数据到数据库
             }
 
-            $this->redirect('Project/slides');
+            $this->redirect('Project/index');
         }
 
         $this->assign('info', array());
@@ -91,7 +95,11 @@ class ProjectController extends BaseController {
 
 	public function slides()
     {
-        $lists = M('project_slides')->order('sort Desc')->select();
+        $m=M('project_slides');
+        $p = getpage($m,$where,12);
+        $show = $p->show();
+        $this->assign('page',$show);
+		$lists = $m->order('sort Desc')->select();
 
         $this->assign('lists', $lists);
         $this->assign('app_name', 'project_slides');
@@ -103,7 +111,7 @@ class ProjectController extends BaseController {
     {
         if ($id) {
             unlink($_SERVER['DOCUMENT_ROOT'].'/Public/'.M('project_slides')->where('id='.$id)->getfield('pic'));
-            M('about_slides')->delete($id);
+            M('project_slides')->delete($id);
         }
 
         $this->redirect("Project/slides");

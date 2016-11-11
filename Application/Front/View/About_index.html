@@ -13,7 +13,11 @@
     <div id="banner_box" class="box_swipe" >
         <ul>
             <volist name="infoSlides" id="s">
-                <li><a href="{$s.url}"> <img src="__PUBLIC__/{$s.pic}" /></a> </li>
+                <li><a href="{$s.url}"> <img src="__PUBLIC__/{$s.pic}" />
+                    <div class="title_bg" style="height:30px; line-height:30px;">
+                        {$s.title}
+                    </div>
+                </a> </li>
             </volist>
         </ul>
         <ol>
@@ -30,7 +34,6 @@
         	<li class="title">{$info.title}</li>
             <li class="text">
             	<p>&nbsp;&nbsp;&nbsp;&nbsp;{$info.desc}</p>
-                <p><img src="__PUBLIC__/{$info.pic}" /></p>
             </li>
         </ul>
     </div>

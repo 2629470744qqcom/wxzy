@@ -9,7 +9,7 @@
   <div class="control-group">
     <label class="control-label">选择精选期刊：</label>
     <div class="controls">
-      <select name="essence_magazine" id="" style="min-width:300px; height:40px;">
+      <select name="essence_magazine" id="" style="min-width:300px; height:auto;">
       	<volist name="magazines" id='m'>
       		<option value="{$m.id}" <if condition="$current_essence eq $m['id']">selected="selected"</if>>{$m.title}</option>
       	</volist>
@@ -35,6 +35,7 @@
   <thead>
     <tr>
       <th>＃</th>
+      <th>标题</th>
       <th>图片</th>
       <th>链接</th>
       <th>排序</th>
@@ -46,6 +47,7 @@
   	<volist name="lists" id="v">
 	    <tr>
 	      <td>{$i}</td>
+        <td>{$v.title}</td>
 	      <td><img src="__PUBLIC__/{$v.pic}" alt="" style="max-width:100px;height:auto;"></td>
 	      <td>{$v.url}</td>
 	      <td>{$v.sort}</td>
@@ -59,8 +61,9 @@
   	</volist>
   </tbody>
 </table>
-
-
+<div class="manu">
+    　　{$page}
+</div>
 <script type="text/javascript">
 	$(function(){
 		$(".btn_del").click(function(e){

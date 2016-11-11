@@ -5,7 +5,16 @@
 </ul>
 
 
-<a href="{:U('Activity/Add')}" class="sui-btn btn-xlarge btn-success">添加</a>
+<a href="{:U('Activity/add')}" class="sui-btn btn-xlarge btn-success">添加</a>
+<form class="sui-form sui-form pull-right" action="{:U('Activity/index')}">
+	<label for="title">标题：</label><input type="text" id="title" name="title" placeholder="活动名称..." value="<?php echo I('get.title')?>">
+	<!--活动状态：<select name="status">-->
+	<!--<option>全部</option>-->
+	<!--<option>进行中</option>-->
+	<!--<option>已结束</option>-->
+<!--</select>-->
+	<button class="sui-btn btn-primary" type="submit">搜索</button>
+</form>
 <br><br>
 
 <table class="sui-table table-bordered-simple">
@@ -41,6 +50,9 @@
   </tbody>
 </table>
 
+<div class="manu">
+	{$page}
+</div>
 
 <script type="text/javascript">
 	$(function(){

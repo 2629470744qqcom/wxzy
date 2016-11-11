@@ -5,16 +5,24 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<meta name="description" content="">
   	<title>{:C('site_name')}</title>
-	
 
   	<link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
   	<script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
   	<script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
-
-  	<style>
+  	<style type="text/css">
   		.sidebar {
   			font-size: 14px;
-  		}  		
+  		}
+		.manu{padding:3px;margin:3px;text-align:center;}
+		.manu a{border:#eee 1px solid;padding:2px 5px;margin:2px;color:#036cb4;text-decoration:none;}
+		.manu a:hover{border:#999 1px solid;color:#666;}
+		.manu a:active{border:#999 1px solid;color:#666;}
+		.manu .current{border:#036cb4 1px solid;padding:2px 5px;font-weight:bold;margin:2px;color:#fff;background-color:#036cb4;}
+		.manu .disabled{border:#eee 1px solid;padding:2px 5px;margin:2px;color:#ddd;}
+		li{
+			list-style: none ;
+			display: inline ;
+		}
   	</style>
 </head>
 <body>
@@ -22,7 +30,30 @@
 		<div class="sui-navbar">
 		  	<div class="navbar-inner"><a href="#" class="sui-brand">{:C("site_name")}</a>
 		    	<ul class="sui-nav pull-right">	
-		      		<li><a href="#">{$username}</a></li>		      		
+					<li><a href="#">今天是：&nbsp;
+					<script type="text/javascript" language="javascript">
+					var	today=new Date();
+						function initArray(){
+							this.length=initArray.arguments.length
+							for(var i=0;i<this.length;i++)
+								this[i+1]=initArray.arguments[i]  }
+						var d=new initArray(
+								"星期日",
+								"星期一",
+								"星期二",
+								"星期三",
+								"星期四",
+								"星期五",
+								"星期六");
+						document.write(
+								today.getFullYear(),"年",
+								today.getMonth()+1,"月",
+								today.getDate(),"日",
+								"&nbsp;&nbsp;",
+								d[today.getDay()+1]);
+					</script>
+					</a></li>
+		      		<li><a href="#">欢迎您 ,{$username}</a></li>		      		
 		      		<li><a href="{:U('Base/changeName')}">更改名称</a></li>		      		
 		      		<li><a href="{:U('Base/changePW')}">修改秘密</a></li>
 		      		<li><a href="{:U('Base/logout')}">退出登录</a></li>
@@ -32,7 +63,6 @@
 
 	  	<div class="sidebar">
 	  		<ul class="sui-nav nav-list">
-				<li class="nav-header">伟星</li>
 			  	<li <eq name="app_name" value="home">class="active"</eq>><a href="{:U('Index/index')}">后台首页</a></li>
 
 			  	<li class="nav-header">伟星历程</li>
@@ -41,6 +71,7 @@
 
 			  	<li class="nav-header">杂志</li>
 			  	<li <eq name="app_name" value="magazine_index">class="active"</eq>><a href="{:U('Magazine/index')}">杂志列表</a></li>
+				<li <eq name="app_name" value="magazine_faceimg">class="active"</eq>><a href="{:U('Magazine/faceimg')}">封面图片</a></li>
 			  	<li <eq name="app_name" value="magazine_essence">class="active"</eq>><a href="{:U('Magazine/essence')}">精选期刊</a></li>
 
 			  	<li class="nav-header">活动</li>

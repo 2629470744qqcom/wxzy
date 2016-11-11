@@ -15,18 +15,10 @@
   <div class="control-group">
     <label class="control-label">介绍说明：</label>
     <div class="controls">
-      <textarea class='input-xxlarge' name="desc" data-rules='required' style="height: 190px;">{$info.desc}</textarea>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label">底部图片：</label>
-    <div class="controls">
-    	<if condition="$info.pic"><img src="__PUBLIC__/{$info.pic}?v={:time()}" alt="" style="max-width:200px; height:auto;"><br/><br></if>
-      <input type="file" name="pic" class="input-xlarge">
+      <textarea id="editor_id" name="desc"  style="width:700px;height:300px;">{$info.desc}</textarea>
     </div>
   </div>
 
-  <br><br>
   <div class="control-group">
   	<label class="control-label"></label>
     <div class="controls">
@@ -34,4 +26,20 @@
       <a href="{:U('Index/index')}"><button class="sui-btn btn-primary btn-xlarge" type="button">取消</button></a>
     </div>
   </div>
-</form> 
+</form>
+
+<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/lang/zh-CN.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/kindeditor-4.1.10/themes/default/default.css" />
+<script>
+  KindEditor.ready(function(K) {
+    window.editor = K.create('#editor_id');
+  });
+
+  var options = {
+    cssPath : '/css/index.css',
+    filterMode : true
+  };
+
+  var editor = K.create('textarea[name="desc"]', options);
+</script>

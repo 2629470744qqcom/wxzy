@@ -6,11 +6,13 @@ use Home\Controller\BaseController;
 class MagazineController extends BaseController {
 	public function index () 
 	{
-		$lists = M('magazine')->order('create_time Desc')->select();
-
+        $m=M('magazine');
+        $p = getpage($m,$where,12);
+        $show = $p->show();
+        $this->assign('page',$show);
+		$lists = $m->order('create_time Desc')->select();
         $this->assign('lists', $lists);
         $this->assign('app_name', 'magazine_index');
-
 		$this->display();
 	}
 
@@ -81,14 +83,41 @@ class MagazineController extends BaseController {
 		$this->redirect("Magazine/index");
 	}
 
+    public function faceimg(){
+        if(IS_POST){
+        $pic = M('magazine_face')->getfield('pic');
+        M('magazine_face')->where('1')->delete();
 
+        if ($_FILES['pic']['name']) {
+            $_POST['pic'] = $this->uploadImg("face");
+        } else {
+            $_POST['pic'] = $pic;
+        }
+
+        $about = M('magazine_face');
+        if($about->create()){
+            $about->add(); // 写入数据到数据库
+        }
+
+        $this->redirect("magazine/faceimg");
+    }
+
+    $info = M('magazine_face')->find();
+    $this->assign('info', $info);
+    $this->assign('app_name', 'magazine_faceimg');
+    $this->display();
+    }
 
 
 
 
 	public function essence ()
 	{
-		$lists = M("magazine_slides")->select();
+        $m=M('magazine_slides');
+        $p = getpage($m,$where,12);
+        $show = $p->show();
+        $this->assign('page',$show);
+        $lists = $m->select();
 
 		$this->assign('lists', $lists);
         $this->assign('app_name', 'magazine_essence');

@@ -9,13 +9,19 @@
   <div class="control-group">
     <label class="control-label">链接：</label>
     <div class="controls">
-      <input class="input-xxlarge" name="url" type='text' value="{$info.url}" />
+      <input class="input-xxlarge" name="url" type='text' value="{$info.url}" placeholder="图片的链接地址, 如：http://www.baidu.com" />
     </div>
   </div>
   <div class="control-group">
     <label class="control-label">排序：</label>
     <div class="controls">
       <input class="input-xxlarge" name="sort" type='number' value="{$info.sort|default=10}" />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">标题：</label>
+    <div class="controls">
+      <input class="input-xxlarge" name="title" type='text' value="{$info.title|default=''}" placeholder="图片的名称" />
     </div>
   </div>
   <div class="control-group">

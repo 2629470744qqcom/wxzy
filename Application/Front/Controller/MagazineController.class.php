@@ -26,6 +26,10 @@ class MagazineController extends Controller {
 
         $infoEssence = M()->table('wxzy_magazine m,wxzy_magazine_slides s')->field('m.id,m.title,s.pic,m.is_essence')->where('m.is_essence = 1')->find();
         $this->assign('infoEssence', $infoEssence);
+
+        $face=M('Magazine_face')->find();
+        $this->assign("face",$face);
+
         $this->display();
     }
 
